@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask import render_template, request, url_for, redirect
+from flask import render_template, request, url_for, redirect, session
 from flask_security import Security, SQLAlchemyUserDatastore, UserMixin, RoleMixin, login_required
 from flask.ext.security.utils import encrypt_password
 from settings import *
@@ -37,8 +37,10 @@ user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
 @app.route('/')
+@login_required
 def index():
-    return render_template('index.html')
+    return render_template('/index.html')
+
 
 @app.route('/profile/<email>')
 @login_required
