@@ -41,6 +41,10 @@ security = Security(app, user_datastore)
 def index():
     return render_template('/index.html')
 
+@app.route('/add_customer/')
+@login_required
+def add_customer():
+    return render_template('/add_customer.html')
 
 @app.route('/profile/<email>')
 @login_required
