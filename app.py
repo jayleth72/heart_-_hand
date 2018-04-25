@@ -36,16 +36,6 @@ class User(db.Model, UserMixin):
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
 
-@app.route('/')
-@login_required
-def index():
-    return render_template('/index.html')
-
-@app.route('/add_customer/')
-@login_required
-def add_customer():
-    return render_template('/add_customer.html')
-
 @app.route('/profile/<email>')
 @login_required
 def profile(email):
@@ -58,6 +48,38 @@ def post_user():
    db.session.add(user)
    db.session.commit() 
    return redirect(url_for('index'))
+
+# Navigation 
+@app.route('/')
+@login_required
+def index():
+    return render_template('/index.html')
+
+@app.route('/add_customer/')
+@login_required
+def add_customer():
+    return render_template('/add_customer.html')
+
+@app.route('/add_class_member/')
+@login_required
+def add_class_member():
+    return render_template('/add_class_member.html')
+
+@app.route('/add_class/')
+@login_required
+def add_class():
+    return render_template('/add_class.html') 
+
+@app.route('/add_expense/')
+@login_required
+def add_expense():
+    return render_template('/add_expense.html') 
+
+@app.route('/add_payment/')
+@login_required
+def add_payment():
+    return render_template('/add_payment.html')    
+
    
 if __name__=="__main__":
     app.debug=True  
