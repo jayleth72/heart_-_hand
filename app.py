@@ -12,7 +12,7 @@ app.config['SECURITY_REGISTERABLE']= SECURITY_REGISTERABLE
 app.config['SECURITY_PASSWORD_HASH'] = SECURITY_PASSWORD_HASH 
 app.config['SECURITY_PASSWORD_SALT'] = SECURITY_PASSWORD_SALT 
 db=SQLAlchemy(app)
-git 
+
 # Define models
 roles_users = db.Table('roles_users',
         db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
