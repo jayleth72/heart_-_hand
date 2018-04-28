@@ -7,12 +7,12 @@ from settings import *
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']= DATABASE_PASSWORD
-# app.config['SECRET_KEY']= SECRET_KEY 
-# app.config['SECURITY_REGISTERABLE']= SECURITY_REGISTERABLE
-# app.config['SECURITY_PASSWORD_HASH'] = SECURITY_PASSWORD_HASH 
-# app.config['SECURITY_PASSWORD_SALT'] = SECURITY_PASSWORD_SALT 
+app.config['SECRET_KEY']= SECRET_KEY 
+app.config['SECURITY_REGISTERABLE']= SECURITY_REGISTERABLE
+app.config['SECURITY_PASSWORD_HASH'] = SECURITY_PASSWORD_HASH 
+app.config['SECURITY_PASSWORD_SALT'] = SECURITY_PASSWORD_SALT 
 db=SQLAlchemy(app)
-
+git 
 # Define models
 roles_users = db.Table('roles_users',
         db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),

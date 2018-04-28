@@ -4,4 +4,3 @@ templates/security/_macros.html
 templates/security/_menu.html
 templates/security/_messages.html
 venv
-dev_settings.py
