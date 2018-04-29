@@ -6,3 +6,5 @@ templates/security/_messages.html
 venv
 dev_settings.py
 settings.py
+static/package-lock.json
+static/package.json
