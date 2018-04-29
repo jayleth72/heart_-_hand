@@ -5,11 +5,10 @@ from flask_security import Security, SQLAlchemyUserDatastore, UserMixin, RoleMix
 from flask.ext.security.utils import encrypt_password
 from boto.s3.connection import S3Connection
 import os
-s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 from settings import *
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']= DATABASE_URL + "sslmode=require"
+app.config['SQLALCHEMY_DATABASE_URI']= os.environ.get('DATABASE_U') + "sslmode=require"
 app.config['SECRET_KEY']= SECRET_KEY 
 app.config['SECURITY_REGISTERABLE']= SECURITY_REGISTERABLE
 app.config['SECURITY_PASSWORD_HASH'] = SECURITY_PASSWORD_HASH 
