@@ -8,7 +8,7 @@ import os
 from settings import *
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']= os.environ.get('DATABASE_U') + "sslmode=require"
+app.config['SQLALCHEMY_DATABASE_URI']= os.environ.get('DATABASE_URL')
 app.config['SECRET_KEY']= SECRET_KEY 
 app.config['SECURITY_REGISTERABLE']= SECURITY_REGISTERABLE
 app.config['SECURITY_PASSWORD_HASH'] = SECURITY_PASSWORD_HASH 
