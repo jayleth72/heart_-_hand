@@ -41,7 +41,7 @@ class Customer(db.Model):
     street_address = db.Column(db.String(150))
     suburb = db.Column(db.String(50))
     state = db.Column(db.String(50))
-    postcode = db.Column(db.String(50))
+    postcode = db.Column(db.Integer())
     phone = db.Column(db.String(50))
     alternative_contact = db.Column(db.String(100))
     alternative_contact_phone = db.Column(db.String(50))
