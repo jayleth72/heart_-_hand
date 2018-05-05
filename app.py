@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, request, url_for, redirect, session
 from flask_security import Security, SQLAlchemyUserDatastore, UserMixin, RoleMixin, login_required
 from flask.ext.security.utils import encrypt_password
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 import os
 # from settings import *
 
@@ -13,6 +15,8 @@ app.config['SECURITY_REGISTERABLE']= os.environ.get('SECURITY_REGISTERABLE')
 app.config['SECURITY_PASSWORD_HASH'] = os.environ.get('SECURITY_PASSWORD_HASH')  
 app.config['SECURITY_PASSWORD_SALT'] = os.environ.get('SECURITY_PASSWORD_SALT') 
 db=SQLAlchemy(app)
+
+admin = Admin(app)
 
 # Define models
 roles_users = db.Table('roles_users',
@@ -53,6 +57,8 @@ class Child(db.Model):
     first_name = db.Column(db.String(80))
     last_name = db.Column(db.String(80))
     notes= db.Column(db.String(255)) 
+
+admin.add_view(ModelView)
 
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
