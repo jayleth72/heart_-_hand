@@ -58,7 +58,7 @@ class Child(db.Model):
     last_name = db.Column(db.String(80))
     notes= db.Column(db.String(255)) 
 
-admin.add_view(ModelView)
+admin.add_view(ModelView())
 
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
