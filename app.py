@@ -36,7 +36,7 @@ db=SQLAlchemy(app)
 class Customer(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     first_name = db.Column(db.String(80))
-    last_name = db.Column(db.String(80)
+    last_name = db.Column(db.String(80))
     email = db.Column(db.String(255), unique=True)
     street_address = db.Column(db.String(150))
     suburb = db.Column(db.String(50))
