@@ -1,5 +1,6 @@
 from app import app
 from flask_security import login_required
+from flask import render_template
 
 @app.route('/profile/<email>')
 @login_required

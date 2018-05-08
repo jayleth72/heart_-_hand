@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, request, url_for, redirect, session
-from flask_security import Security, SQLAlchemyUserDatastore, UserMixin, RoleMixin, login_required
+from flask_security import Security, SQLAlchemyUserDatastore
 from flask.ext.security.utils import encrypt_password
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
