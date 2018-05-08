@@ -20,9 +20,12 @@ db=SQLAlchemy(app)
 admin = Admin(app)
 
 # Setup Flask-Security
-from models import User, Role
+from models import *
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)
+
+admin.add_view(ModelView(User, db.session))
+admin.add_view(ModelView(Customer, db.session))
 
 from views import *
 
