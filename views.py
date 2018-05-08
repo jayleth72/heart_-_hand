@@ -1,4 +1,5 @@
 from app import app
+from flask_security import login_required
 
 @app.route('/profile/<email>')
 @login_required
