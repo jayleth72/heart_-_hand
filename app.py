@@ -5,7 +5,7 @@ from flask_security import Security, SQLAlchemyUserDatastore, UserMixin, RoleMix
 from flask.ext.security.utils import encrypt_password
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from flask_wtf import FLaskForm
+from flask_wtf import FlaskForm
 import os
 # from settings import *
 
