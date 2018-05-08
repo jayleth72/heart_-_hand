@@ -41,5 +41,3 @@ class Child(db.Model):
     last_name = db.Column(db.String(80))
     notes= db.Column(db.String(255)) 
 
-admin.add_view(ModelView(User, db.session))
-admin.add_view(ModelView(Customer, db.session))
