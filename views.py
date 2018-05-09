@@ -1,6 +1,8 @@
 from app import app
 from flask_security import login_required
 from flask import render_template
+from flask_wtf import FlaskForm
+from forms import *
 
 @app.route('/profile/<email>')
 @login_required
@@ -24,11 +26,12 @@ def index():
 @app.route('/add_customer/')
 @login_required
 def add_customer():
-    return render_template('/add_customer.html')
+    return render_template('/add_customer.html', form=form)
 
 @app.route('/add_class_member/')
 @login_required
 def add_class_member():
+    form = CustomerEntryForm()
     return render_template('/add_class_member.html')
 
 @app.route('/add_class/')
