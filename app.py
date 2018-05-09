@@ -10,6 +10,8 @@ from flask_wtf import FlaskForm
 
 app = Flask(__name__)
 
+app.config.from_pyfile('config.py')
+
 db=SQLAlchemy(app)
 
 admin = Admin(app)
@@ -26,5 +28,4 @@ admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Customer, db.session))
 
 if __name__=="__main__":
-    app.debug=True  
     app.run()    
