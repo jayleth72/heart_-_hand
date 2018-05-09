@@ -26,12 +26,12 @@ def index():
 @app.route('/add_customer/')
 @login_required
 def add_customer():
+    form = CustomerEntryForm()
     return render_template('/add_customer.html', form=form)
 
 @app.route('/add_class_member/')
 @login_required
 def add_class_member():
-    form = CustomerEntryForm()
     return render_template('/add_class_member.html')
 
 @app.route('/add_class/')
