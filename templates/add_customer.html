@@ -11,7 +11,7 @@ Add Customer
     <h2 class="text-center text-uppercase text-white">About</h2>
     <hr class="star-light mb-5">
     <div class="row">
-     <form method="POST" action="{{ url_for('form') }}">
+     <form method="POST" action="{{ url_for('add_customer') }}">
         {{ form.csrf_token }}
      </form>
     </div>
