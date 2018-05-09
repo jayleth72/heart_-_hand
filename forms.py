@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectField, EmailField
+from wtforms import StringField, IntegerField, SelectField
 
 class CustomerEntryForm(FlaskForm):
     first_name = StringField('first_name')
     last_name = StringField('first_name')
-    email = EmailField('email')
+    email = StringField('email')
     street_address = StringField('first_name')
     suburb = StringField('first_name')
     state = SelectField(u'State', choices=[('WA', 'Western Australia'), ('NT', 'Northern Territory'), ('QLD', 'Queensland'), ('NSW', 'New South Wales'), ('Vic', 'Victoria'), ('Tas', 'Tasmania'), ('SA', 'South Australia')])
