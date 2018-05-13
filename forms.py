@@ -7,9 +7,11 @@ class CustomerEntryForm(FlaskForm):
     email = StringField('email')
     street_address = StringField('street_address')
     suburb = StringField('suburb')
-    state = SelectField(u'State', choices=[('WA', 'Western Australia'), ('NT', 'Northern Territory'), ('QLD', 'Queensland'), ('NSW', 'New South Wales'), ('Vic', 'Victoria'), ('Tas', 'Tasmania'), ('SA', 'South Australia')])
+    state = SelectField(u'State', choices=[('QLD', 'Queensland'), ('NT', 'Northern Territory'), ('WA', 'Western Australia'), ('NSW', 'New South Wales'), ('Vic', 'Victoria'), ('Tas', 'Tasmania'), ('SA', 'South Australia')])
     postcode = IntegerField('postcode')
     phone = StringField('phone')
     alternative_contact = StringField('alternative_contact')
     alternative_contact_phone = StringField('alternative_contact_phone')
     notes = StringField('notes')
+
+    

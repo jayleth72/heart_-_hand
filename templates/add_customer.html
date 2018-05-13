@@ -9,24 +9,26 @@ Add Customer
 <!-- About Section -->
 <section class="bg-primary text-white mb-0" id="about">
   <div class="container">
-    <h2 class="text-center text-uppercase text-white">About</h2>
+    <h2 class="text-center text-uppercase text-white">Add Customer</h2>
     <hr class="star-light mb-5">
     <div class="row">
-     <form method="POST" action="{{ url_for('add_customer') }}">
-        {{ form.csrf_token }}
-        {{ render_field(form.first_name) }}
-        {{ render_field(form.last_name) }}
-        {{ render_field(form.email) }}
-        {{ render_field(form.street_address) }} 
-        {{ render_field(form.suburb) }} 
-        {{ render_field(form.state) }} 
-        {{ render_field(form.postcode) }} 
-        {{ render_field(form.phone) }} 
-        {{ render_field(form.alternative_contact) }} 
-        {{ render_field(form.alternative_contact_phone) }}
-        {{ render_field(form.notes) }}       
-        
-     </form>
+        <div class="container form_details">
+          <form method="POST" action="{{ url_for('add_customer') }}">
+              {{ form.csrf_token }}
+              {{ render_field(form.first_name, class="form-control") }}
+              {{ render_field(form.last_name, class="form-control") }}
+              {{ render_field(form.email, class="form-control") }}
+              {{ render_field(form.street_address, class="form-control") }} 
+              {{ render_field(form.suburb, class="form-control") }} 
+              {{ render_field(form.state, class="form-control") }} 
+              {{ render_field(form.postcode, class="form-control") }} 
+              {{ render_field(form.phone, class="form-control") }} 
+              {{ render_field(form.alternative_contact, class="form-control") }} 
+              {{ render_field(form.alternative_contact_phone, class="form-control") }}
+              {{ render_field(form.notes, class="form-control") }}       
+              
+          </form>
+        </div>  
     </div>
     <div class="text-center mt-4">
       <a class="btn btn-xl btn-outline-light" href="#">
