@@ -1,3 +1,4 @@
+{% from "/macros/_render_field.html" import render_field %}
 {% extends "layouts/layout1.html" %}
 {% block title %}
 Add Customer
@@ -13,11 +14,9 @@ Add Customer
     <div class="row">
      <form method="POST" action="{{ url_for('add_customer') }}">
         {{ form.csrf_token }}
-        {{ form.first_name.label }}
-        {{ form.first_name }}
-        {{ form.last_name.label }}
-        {{ form.last_name }}
-      
+        {{ render_field(form.first_name) }}
+        {{ render_field(form.last_name) }}
+          
      </form>
     </div>
     <div class="text-center mt-4">

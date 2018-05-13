@@ -3,7 +3,7 @@ from wtforms import StringField, IntegerField, SelectField
 
 class CustomerEntryForm(FlaskForm):
     first_name = StringField('first_name')
-    last_name = StringField('first_name')
+    last_name = StringField('last_name')
     email = StringField('email')
     street_address = StringField('first_name')
     suburb = StringField('first_name')
