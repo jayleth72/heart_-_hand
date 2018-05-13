@@ -16,7 +16,16 @@ Add Customer
         {{ form.csrf_token }}
         {{ render_field(form.first_name) }}
         {{ render_field(form.last_name) }}
-          
+        {{ render_field(form.email) }}
+        {{ render_field(street_address) }} 
+        {{ render_field(suburb) }} 
+        {{ render_field(state) }} 
+        {{ render_field(postcode) }} 
+        {{ render_field(phone) }} 
+        {{ render_field(alternative_contact) }} 
+        {{ render_field(alternative_contact_phone) }}
+               
+        notes = StringField('notes')
      </form>
     </div>
     <div class="text-center mt-4">
