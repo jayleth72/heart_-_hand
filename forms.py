@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SelectField
+from wtforms.validators import DataRequired
 
 class CustomerEntryForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
