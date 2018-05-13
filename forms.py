@@ -12,4 +12,4 @@ class CustomerEntryForm(FlaskForm):
     phone = StringField('phone')
     alternative_contact = StringField('alternative_contact')
     alternative_contact_phone = StringField('alternative_contact_phone')
-    notes = TextAreaField('notes')
+    notes = StringField('notes')
