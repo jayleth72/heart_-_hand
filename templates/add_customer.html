@@ -17,15 +17,15 @@ Add Customer
         {{ render_field(form.first_name) }}
         {{ render_field(form.last_name) }}
         {{ render_field(form.email) }}
-        {{ render_field(street_address) }} 
-        {{ render_field(suburb) }} 
-        {{ render_field(state) }} 
-        {{ render_field(postcode) }} 
-        {{ render_field(phone) }} 
-        {{ render_field(alternative_contact) }} 
-        {{ render_field(alternative_contact_phone) }}
-               
-        notes = StringField('notes')
+        {{ render_field(form.street_address) }} 
+        {{ render_field(form.suburb) }} 
+        {{ render_field(form.state) }} 
+        {{ render_field(form.postcode) }} 
+        {{ render_field(form.phone) }} 
+        {{ render_field(form.alternative_contact) }} 
+        {{ render_field(form.alternative_contact_phone) }}
+        {{ render_field(form.notes) }}       
+        
      </form>
     </div>
     <div class="text-center mt-4">
