@@ -1,4 +1,4 @@
-{% from "/macros/_render_field.html" import render_field %}
+{% from "/macros/_macros.html" import render_field_with_errors, render_field %}
 {% extends "layouts/layout1.html" %}
 {% block title %}
 Add Customer
@@ -15,18 +15,18 @@ Add Customer
         <div class="container form_details">
           <form method="POST" action="{{ url_for('add_customer') }}">
               {{ form.csrf_token }}
-              {{ render_field(form.first_name, class="form-control") }}
-              {{ render_field(form.last_name, class="form-control") }}
-              {{ render_field(form.email, class="form-control") }}
-              {{ render_field(form.street_address, class="form-control") }} 
-              {{ render_field(form.suburb, class="form-control") }} 
+              {{ render_field_with_errors((form.first_name, class="form-control") }}
+              {{ render_field_with_errors((form.last_name, class="form-control") }}
+              {{ render_field_with_errors((form.email, class="form-control") }}
+              {{ render_field_with_errors((form.street_address, class="form-control") }} 
+              {{ render_field_with_errors((form.suburb, class="form-control") }} 
               {{ render_field(form.state, class="form-control") }} 
-              {{ render_field(form.postcode, class="form-control") }} 
-              {{ render_field(form.phone, class="form-control") }} 
+              {{ render_field_with_errors((form.postcode, class="form-control") }} 
+              {{ render_field_with_errors((form.phone, class="form-control") }} 
               {{ render_field(form.alternative_contact, class="form-control") }} 
               {{ render_field(form.alternative_contact_phone, class="form-control") }}
               {{ render_field(form.notes, class="form-control") }}       
-              
+              <input type="submit" value="submit">
           </form>
         </div>  
     </div>
