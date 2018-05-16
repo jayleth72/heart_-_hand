@@ -27,6 +27,17 @@ def index():
 @login_required
 def add_customer():
     form = CustomerEntryForm()
+
+    if form.validate():
+        customer = CustomerEntryForm(()
+        form.populate_obj(customer)
+        # entry.id=1
+        db.session.add(customer)
+        db.session.commit()
+        flash('New entry was successfully posted')
+    else:
+        flash("Your form contained errors")
+
     return render_template('/add_customer.html', form=form)
 
 @app.route('/add_class_member/')
