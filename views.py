@@ -23,7 +23,7 @@ def post_user():
 def index():
     return render_template('/index.html')
 
-@app.route('/add_customer/')
+@app.route('/add_customer/', methods=['POST'])
 @login_required
 def add_customer():
     form = CustomerEntryForm()
