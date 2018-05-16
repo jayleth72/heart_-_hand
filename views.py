@@ -29,7 +29,7 @@ def add_customer():
     form = CustomerEntryForm()
 
     if form.validate():
-        customer = CustomerEntryForm(()
+        customer = CustomerEntryForm()
         form.populate_obj(customer)
         # entry.id=1
         db.session.add(customer)
