@@ -1,6 +1,6 @@
 from app import app
 from flask_security import login_required
-from flask import render_template
+from flask import render_template, redirect, url_for, request
 from flask_wtf import FlaskForm
 from forms import *
 
@@ -23,22 +23,27 @@ def post_user():
 def index():
     return render_template('/index.html')
 
-@app.route('/add_customer/', methods=['POST'])
+@app.route('/add_customer', methods=['GET','POST'])
 @login_required
 def add_customer():
     form = CustomerEntryForm()
 
-    if form.validate():
-        customer = CustomerEntryForm()
-        form.populate_obj(customer)
-        # entry.id=1
-        db.session.add(customer)
-        db.session.commit()
-        flash('New entry was successfully posted')
-    else:
-        flash("Your form contained errors")
+    if request.method == 'POST':
+        if form.validate():
+            customer = CustomerEntryForm()
+            form.populate_obj(customer)
+            # entry.id=1
+            db.session.add(customer)
+            db.session.commit()
+            flash('New entry was successfully posted')
+            return render_template('success.html')
+        else:
+            flash("Your form contained errors")
+            return render_template('/add_customer.html', form=form)
+        elif request.method == 'GET': 
+            return render_template('/add_customer.html', form=form)    
 
-    return render_template('/add_customer.html', form=form)
+    
 
 @app.route('/add_class_member/')
 @login_required
