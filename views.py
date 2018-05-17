@@ -30,8 +30,10 @@ def add_customer():
 
     if request.method == 'POST':
         if form.validate():
-            customers = CustomerEntryForm()
-            form.populate_obj(customers)
+            customer = Customer(request.form['first_name'],request.form['last_name'],request.form['email'],request.form['street_address']
+                       ,request.form['suburb'],request.form['state'],request.form['postcode'],request.form['first_name'],request.form['phone']
+                       ,request.form['alternative_contact'],request.form['alternative_contact_phone'],request.form['notes'])
+            form.populate_obj(customer)
             # entry.id=1
             db.session.add(customer)
             db.session.commit()
