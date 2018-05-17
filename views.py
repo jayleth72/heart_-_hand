@@ -40,8 +40,8 @@ def add_customer():
         else:
             flash("Your form contained errors")
             return render_template('/add_customer.html', form=form)
-        elif request.method == 'GET': 
-            return render_template('/add_customer.html', form=form)    
+    elif request.method == 'GET': 
+        return render_template('/add_customer.html', form=form)    
 
     
 
