@@ -38,10 +38,10 @@ def add_customer():
             # entry.id=1
             db.session.add(customer)
             db.session.commit()
-            flash('New entry was successfully posted')
+            # flash('New entry was successfully posted')
             return render_template('success.html')
         else:
-            flash("Your form contained errors")
+            # flash("Your form contained errors")
             return render_template('/add_customer.html', form=form)
     elif request.method == 'GET': 
         return render_template('/add_customer.html', form=form)    
