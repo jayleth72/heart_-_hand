@@ -3,6 +3,7 @@ from flask_security import login_required
 from flask import render_template, redirect, url_for, request
 from flask_wtf import FlaskForm
 from forms import *
+from models import *
 
 @app.route('/profile/<email>')
 @login_required
