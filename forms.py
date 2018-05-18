@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectField
+from wtforms import StringField, IntegerField, SelectField, TextAreaField
 from wtforms.validators import InputRequired
 
 class CustomerEntryForm(FlaskForm):
@@ -13,6 +13,6 @@ class CustomerEntryForm(FlaskForm):
     phone = StringField('Phone', validators=[InputRequired(message='Phone No. is required')])
     alternative_contact = StringField('Alternative Contact')
     alternative_contact_phone = StringField('Alternative Contact Phone')
-    notes = StringField('Notes')
+    notes = TextAreaField('Notes')
 
     
