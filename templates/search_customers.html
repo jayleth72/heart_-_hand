@@ -22,7 +22,7 @@ Search Customers
         {% endwith %}
 
         <div class="container form_details">
-          <form method="POST" action="{{ url_for('search_customer') }}">
+          <form method="POST" action="{{ url_for('search_customers') }}">
               {{ form.csrf_token }}
               <dl>
                   {{ render_field(form.select) }}
