@@ -12,8 +12,8 @@ Add Customer
     <h2 class="text-center text-uppercase text-white form-heading">Add Customer</h2>
     <div class="row">
         
-        <div class="container form-horizontal form_details">
-          <form  method="POST" action="{{ url_for('add_customer') }}">
+        <div class="container form_details">
+          <form class="form-horizontal" method="POST" action="{{ url_for('add_customer') }}">
               {{ form.csrf_token }}
               <div class="form-group">
                 <div class="col-md-6">{{ render_field_with_errors(form.first_name, class="form-control") }}</div>
