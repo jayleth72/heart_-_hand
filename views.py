@@ -69,7 +69,7 @@ def search_results(search):
  
     if not results:
         flash('No results found!')
-        return redirect('search_customers.html')
+        return redirect(url_for('search_customers'))
     else:
         # display results
         return render_template('results.html', results=results)
