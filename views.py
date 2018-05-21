@@ -67,3 +67,8 @@ def add_expense():
 @login_required
 def add_payment():
     return render_template('/add_payment.html')  
+
+@app.route('/customer_admin/')
+@login_required
+def customer_admin():
+    return render_template('/customer_admin.html')     
