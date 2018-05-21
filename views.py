@@ -49,7 +49,7 @@ def add_customer():
 
 @app.route('/search_customers', methods=['GET','POST'])
 @login_required
-def search_customer():
+def search_customers():
     search = CustomerSearchForm()
 
     if request.method == 'POST':
