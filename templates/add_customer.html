@@ -12,13 +12,14 @@ Add Customer
     <h2 class="text-center text-uppercase text-white form-heading">Add Customer</h2>
     <div class="row">
         
-        <div class="container form_details">
-          <form class="form-inline" method="POST" action="{{ url_for('add_customer') }}">
+        <div class="container form-horizontal form_details">
+          <form  method="POST" action="{{ url_for('add_customer') }}">
               {{ form.csrf_token }}
-              <div class="col-md-6">{{ render_field_with_errors(form.first_name, class="form-control") }}</div>
-              <div class="col-md-6">{{ render_field_with_errors(form.last_name, class="form-control") }}</div>
-              
-              {{ render_field_with_errors(form.email, class="form-control") }}
+              <div class="form-group">
+                <div class="col-md-6">{{ render_field_with_errors(form.first_name, class="form-control") }}</div>
+                <div class="col-md-6">{{ render_field_with_errors(form.last_name, class="form-control") }}</div>
+             </div>
+              <!-- {{ render_field_with_errors(form.email, class="form-control") }}
               {{ render_field_with_errors(form.street_address, class="form-control") }} 
               {{ render_field_with_errors(form.suburb, class="form-control") }} 
               {{ render_field(form.state, class="form-control") }} 
@@ -26,7 +27,7 @@ Add Customer
               {{ render_field_with_errors(form.phone, class="form-control") }} 
               {{ render_field(form.alternative_contact, class="form-control") }} 
               {{ render_field(form.alternative_contact_phone, class="form-control") }}
-              {{ render_field(form.notes, class="form-control") }}       
+              {{ render_field(form.notes, class="form-control") }}        -->
               <input type="submit" value="submit">
           </form>
         </div>  
