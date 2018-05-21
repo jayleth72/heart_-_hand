@@ -1,6 +1,6 @@
 from app import app, db
 from flask_security import login_required
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, flash
 from flask_wtf import FlaskForm
 from forms import *
 from models import *
@@ -38,15 +38,41 @@ def add_customer():
             # entry.id=1
             db.session.add(customer)
             db.session.commit()
-            # flash('New entry was successfully posted')
+            flash('New entry was successfully posted')
             return render_template('success.html')
         else:
-            # flash("Your form contained errors")
+            flash("Your form contained errors")
             return render_template('/add_customer.html', form=form)
     elif request.method == 'GET': 
         return render_template('/add_customer.html', form=form)    
 
-    
+
+@app.route('/search_customers', methods=['GET','POST'])
+@login_required
+def search_customer();
+    search = CustomerSearchForm()
+
+    if request.method == 'POST':
+        return search_results(search)
+
+    return render_template('search_customers.html', form=search)    
+
+
+@app.route('/results')
+def search_results(search):
+    results = []
+    search_string = search.data['search']
+ 
+    if search.data['search'] == '':
+        qry = db_session.query(Customer)
+        results = qry.all()
+ 
+    if not results:
+        flash('No results found!')
+        return redirect('/')
+    else:
+        # display results
+        return render_template('results.html', results=results)
 
 @app.route('/add_class_member/')
 @login_required

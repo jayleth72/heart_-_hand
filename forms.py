@@ -16,4 +16,9 @@ class CustomerEntryForm(FlaskForm):
     alternative_contact_phone = StringField('Alternative Contact Phone')
     notes = TextAreaField('Notes')
 
+class CustomerSearchForm(FlaskForm):
+    choices = [('first_name', 'First name'), ('last_name', 'Last name'), ('email', 'email') ]
+    select = SelectField('Search for Customers:', choices=choices)
+    search = StringField('')    
+
     
