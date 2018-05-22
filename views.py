@@ -64,8 +64,25 @@ def search_results(search):
     results = []
     search_string = search.data['search']
  
-    if search.data['search'] == '':
-        qry = db.session.query(Customer)
+    if search_string:
+        if search.data['select'] == 'First name':
+            qry = db_session.query(Customer, first_name).filter(
+                Customer.id==Customer.id).filter(
+                    Customer.first_name.contains(search_string))
+            results = [item[0] for item in qry.all()]
+        elif search.data['select'] == 'Last name':
+            qry = db_session.query(Customer).filter(
+                Customer.last_name.contains(search_string))
+            results = qry.all()
+        elif search.data['select'] == 'email'
+            qry = db_session.query(Customer).filter(
+                Customer.email.contains(search_string))
+            results = qry.all()
+        else:
+            qry = db_session.query(Customer)
+            results = qry.all()
+    else:
+        qry = db_session.query(Customer)
         results = qry.all()
  
     if not results:
