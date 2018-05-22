@@ -4,6 +4,7 @@ from flask import render_template, redirect, url_for, request, flash
 from flask_wtf import FlaskForm
 from forms import *
 from models import *
+from flask_table import Table, Col
 
 @app.route('/profile/<email>')
 @login_required
@@ -64,7 +65,7 @@ def search_results(search):
     search_string = search.data['search']
  
     if search.data['search'] == '':
-        qry = db_session.query(Customer)
+        qry = db.session.query(Customer)
         results = qry.all()
  
     if not results:
@@ -72,6 +73,8 @@ def search_results(search):
         return redirect(url_for('search_customers'))
     else:
         # display results
+        table = CustomerResults(results)
+        table.border = True
         return render_template('results.html', results=results)
 
 @app.route('/add_class_member/')
@@ -98,3 +101,12 @@ def add_payment():
 @login_required
 def customer_admin():
     return render_template('/customer_admin.html')     
+
+# Tables
+class CustomerResults(Table):
+    id = Col('Id', show=False)
+    first_name = Col('First Name')
+    last_name = Col('Last Name')
+    email = Col('Email')
+    phone = Col('Phone')
+    

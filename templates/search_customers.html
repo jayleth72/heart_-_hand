@@ -12,6 +12,7 @@ Search Customers
     <h2 class="text-center text-uppercase text-white">Search Customers</h2>
     <div class="row">
         
+       <a class="btn btn-primary btn-block" href="{{ url_for('add_customer') }}" role="button">Add New Customer</a>
         {% with messages = get_flashed_messages() %}
           {% if messages %}
             <ul class=flashes>
