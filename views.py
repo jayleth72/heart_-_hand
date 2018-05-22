@@ -65,12 +65,11 @@ def search_results(search):
     search_string = search.data['search']
  
     if search_string:
-        if search.data['select'] == 'First name':
-            qry = db.session.query(Customer, first_name).filter(
-                Customer.id==Customer.id).filter(
-                    Customer.first_name.contains(search_string))
-            results = [item[0] for item in qry.all()]
-        elif search.data['select'] == 'Last name':
+        if search.data['select'] == 'first_name':
+            qry = db.session.query(Customer).filter(
+                Customer.first_name.contains(search_string))
+            results = qry.all()
+        elif search.data['select'] == 'last_name':
             qry = db.session.query(Customer).filter(
                 Customer.last_name.contains(search_string))
             results = qry.all()
