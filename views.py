@@ -75,7 +75,7 @@ def search_results(search):
         # display results
         table = CustomerResults(results)
         table.border = True
-        return render_template('results.html', results=results)
+        return render_template('results.html', table=table)
 
 @app.route('/add_class_member/')
 @login_required
