@@ -74,7 +74,7 @@ def search_results(search):
             qry = db_session.query(Customer).filter(
                 Customer.last_name.contains(search_string))
             results = qry.all()
-        elif search.data['select'] == 'email'
+        elif search.data['select'] == 'email':
             qry = db_session.query(Customer).filter(
                 Customer.email.contains(search_string))
             results = qry.all()
