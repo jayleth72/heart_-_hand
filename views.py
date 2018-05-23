@@ -40,12 +40,12 @@ def add_customer():
             db.session.add(customer)
             db.session.commit()
             flash('New customer was successfully added')
-            return render_template('/add_customer.html')
+            return redirect(url_for('add_customer'))
         else:
             flash("Your form contained errors")
-            return render_template('add_customer.html', form=form)
+            return redirect(url_for('add_customer'))
     elif request.method == 'GET': 
-        return render_template('add_customer.html', form=form)    
+        return redirect(url_for('add_customer'))   
 
 
 @app.route('/search_customers', methods=['GET','POST'])
