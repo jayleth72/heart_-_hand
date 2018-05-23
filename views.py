@@ -58,18 +58,18 @@ def add_child(first_name, last_name, email):
 
     if request.method == 'POST':
         if form.validate():
-            child = Child(first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
+            child = Child(parent_id=customerId,first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
             form.populate_obj(child)
             
             db.session.add(child)
             db.session.commit()
             flash('New child was successfully added')
-            return redirect(url_for('add_child', first_name=first_name, last_name=last_name ,email=email ))
+            return render_template('/success.html')  
         else:
             flash("Your form contained errors")
-            return redirect(url_for('add_child', first_name=first_name, last_name=last_name ,email=email ))
+            return render_template('/success.html') 
     elif request.method == 'GET': 
-        return render_template('/add_child.html', first_name=first_name, customerId=customerId)  
+        return render_template('/add_child.html', first_name=first_name, last_name=last_name)  
     
 
 
@@ -142,6 +142,11 @@ def add_payment():
 @login_required
 def customer_admin():
     return render_template('/customer_admin.html')    
+
+@app.route('/success/')
+@login_required
+def success():
+    return render_template('/success.html')      
 
 # Tables
 class CustomerResults(Table):

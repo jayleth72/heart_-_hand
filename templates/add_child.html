@@ -24,7 +24,7 @@ Add Child
             {% endif %}
           {% endwith %}
           Parent name is {{ first_name }}
-          Customer Id is {{ customerId}}    
+          Parent last name is {{ last_name}}    
          
           <form method="POST" action="{{ url_for('add_child') }}">
                 {{ form.csrf_token }}
