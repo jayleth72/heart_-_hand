@@ -39,5 +39,6 @@ class Child(db.Model):
     parent_id = db.Column(db.Integer(), db.ForeignKey('customer.id'))
     first_name = db.Column(db.String(80))
     last_name = db.Column(db.String(80))
+    age = db.Column(db.DateTime())
     notes= db.Column(db.String(255)) 
 
