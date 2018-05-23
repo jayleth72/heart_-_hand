@@ -26,6 +26,7 @@ security = Security(app, user_datastore)
 # Setup Admin panel
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Customer, db.session))
+admin.add_view(ModelView(Child, db.session))
 
 if __name__=="__main__":
     app.run()    

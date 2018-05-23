@@ -64,10 +64,10 @@ def add_child(first_name, last_name, email):
             db.session.add(child)
             db.session.commit()
             flash('New child was successfully added')
-            return render_template('/success.html')  
+            return render_template('success.html')  
         else:
             flash("Your form contained errors")
-            return render_template('/success.html') 
+            return render_template('success.html') 
     elif request.method == 'GET': 
         return render_template('/add_child.html', form=form, first_name=first_name, last_name=last_name, email=email)  
     
