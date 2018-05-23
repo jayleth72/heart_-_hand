@@ -1,7 +1,7 @@
 {% from "/macros/_macros.html" import render_field_with_errors, render_field %}
 {% extends "layouts/layout1.html" %}
 {% block title %}
-Add Customer
+Add Child
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@ Add Customer
 <!-- About Section -->
 <section class="bg-primary text-white mb-0" id="about">
   <div class="container">
-    <h2 class="text-center text-uppercase text-white form-heading">Add Customer</h2>
+    <h2 class="text-center text-uppercase text-white form-heading">Add Child</h2>
     <div class="row">
         
         <div class="container form_details">
@@ -23,8 +23,9 @@ Add Customer
               </ul>
             {% endif %}
           {% endwith %}
-
-          <form method="POST" action="{{ url_for('add_customer') }}">
+          Parent name is {{ first_name }}
+          Customer Id is {{ customerId}}    
+          <!-- <form method="POST" action="{{ url_for('add_customer') }}">
               {{ form.csrf_token }}
               {{ render_field_with_errors(form.first_name, class="form-control") }}
               {{ render_field_with_errors(form.last_name, class="form-control") }}
@@ -38,7 +39,7 @@ Add Customer
               {{ render_field(form.alternative_contact_phone, class="form-control") }}
               {{ render_field(form.notes, class="form-control") }}       
               <input type="submit" value="submit">
-          </form>
+          </form> -->
         </div>  
     </div>
   
