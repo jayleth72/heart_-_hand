@@ -48,7 +48,7 @@ def add_customer():
         return render_template('add_customer.html', form=form)    
 
 
-@app.route('/add_child/<string:first_name>/<string:last_name>/<string:email>')
+@app.route('/add_child/<string:first_name>/<string:last_name>/<string:email>', methods=['GET','POST'])
 @login_required
 def add_child(first_name, last_name, email):
     # get customer id for insertion as foreign key in child table
