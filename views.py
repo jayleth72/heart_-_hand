@@ -54,20 +54,20 @@ def add_child(first_name, last_name, email):
     # get customer id for insertion as foreign key in child table
     customerId = Customer.query.filter_by(email=email).first()
 
-    form = CustomerEntryForm()
+    form = ChildEntryForm()
 
     if request.method == 'POST':
         if form.validate():
-            child = Customer(first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
+            child = Child(first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
             form.populate_obj(child)
             
             db.session.add(child)
             db.session.commit()
             flash('New child was successfully added')
-            return redirect(url_for('add_child'))
+            return redirect(url_for('add_child', first_name=first_name, last_name=last_name ,email=email ))
         else:
             flash("Your form contained errors")
-            return redirect(url_for('add_child'))
+            return redirect(url_for('add_child', first_name=first_name, last_name=last_name ,email=email ))
     elif request.method == 'GET': 
         return render_template('/add_child.html', first_name=first_name, customerId=customerId)  
     
