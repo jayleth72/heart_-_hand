@@ -69,8 +69,8 @@ def add_child(first_name, last_name, email):
             flash("Your form contained errors")
             return redirect(url_for('add_child'))
     elif request.method == 'GET': 
-        return render_template('add_customer.html', form=form)
-    return render_template('/add_child.html', first_name=first_name, customerId=customerId)  
+        return render_template('/add_child.html', first_name=first_name, customerId=customerId)  
+    
 
 
 @app.route('/search_customers', methods=['GET','POST'])
