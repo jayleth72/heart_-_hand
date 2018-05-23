@@ -39,8 +39,8 @@ def add_customer():
             # entry.id=1
             db.session.add(customer)
             db.session.commit()
-            flash('New entry was successfully posted')
-            return render_template('success.html')
+            flash('New customer was successfully added')
+            return render_template('/add_customer.html')
         else:
             flash("Your form contained errors")
             return render_template('/add_customer.html', form=form)
