@@ -44,6 +44,9 @@ def add_customer():
         else:
             flash("Your form contained errors")
             return redirect(url_for('add_customer'))
+    elif request.method == 'GET': 
+        return render_template('add_customer.html', form=form)    
+
 
 @app.route('/search_customers', methods=['GET','POST'])
 @login_required
