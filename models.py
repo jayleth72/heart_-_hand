@@ -34,5 +34,11 @@ class Customer(db.Model):
     alternative_contact_phone = db.Column(db.String(50))
     notes = db.Column(db.String(255))                            
 
-
+class Child(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    parent_id = db.Column(db.Integer(), db.ForeignKey('customer.id'))
+    first_name = db.Column(db.String(80))
+    last_name = db.Column(db.String(80))
+    date_of_birth = db.Column(db.DateTime())
+    notes= db.Column(db.String(255)) 
 
