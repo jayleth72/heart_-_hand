@@ -52,9 +52,31 @@ def add_customer():
 @login_required
 def add_child(first_name, last_name, email):
     # get customer id for insertion as foreign key in child table
-    customerId = Customer.query.filter_by(email=email).first()
+    # customerId = Customer.query.filter_by(email=email).first()
 
     form = ChildEntryForm()
+
+    # if request.method == 'POST':
+    #     if form.validate():
+    #         child = Child(parent_id=customerId,first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
+    #         form.populate_obj(child)
+            
+    #         db.session.add(child)
+    #         db.session.commit()
+    #         flash('New child was successfully added')
+    #         return render_template('success.html')  
+    #     else:
+    #         flash("Your form contained errors")
+    #         return render_template('success.html') 
+    # elif request.method == 'GET': 
+    return render_template('/add_child.html', form=form, first_name=first_name, last_name=last_name, email=email)  
+
+@app.route('/add_childs', methods=['GET','POST'])
+@login_required
+def add_childs():
+    # get customer id for insertion as foreign key in child table
+    form = ChildEntryForm()
+    customerId = request.form['email']
 
     if request.method == 'POST':
         if form.validate():
@@ -68,9 +90,7 @@ def add_child(first_name, last_name, email):
         else:
             flash("Your form contained errors")
             return render_template('success.html') 
-    elif request.method == 'GET': 
-        return render_template('/add_child.html', form=form, first_name=first_name, last_name=last_name, email=email)  
-    
+       
 
 
 @app.route('/search_customers', methods=['GET','POST'])
