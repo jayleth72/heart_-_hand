@@ -30,7 +30,7 @@ class Child(db.Model):
     last_name = db.Column(db.String(80))
     date_of_birth = db.Column(db.DateTime())
     notes= db.Column(db.String(255)) 
-    
+
 # Setup Admin panel
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Customer, db.session))
