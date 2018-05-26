@@ -40,7 +40,7 @@ def add_customer():
             db.session.add(customer)
             db.session.commit()
             flash('New customer was successfully added')
-            return add_child()
+            return render_template('add_child')
         else:
             flash("Your form contained errors")
             return redirect(url_for('add_customer'))
