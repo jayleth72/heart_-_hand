@@ -68,7 +68,7 @@ def add_child(formData):
              flash("Your form contained errors")
              return render_template('success.html') 
     elif request.method == 'GET': 
-             return render_template('/add_child.html' form=form)  
+             return render_template('/add_child.html', form=form)  
 
 
 @app.route('/search_customers', methods=['GET','POST'])
