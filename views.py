@@ -28,31 +28,31 @@ def index():
 @app.route('/add_customer', methods=['GET','POST'])
 @login_required
 def add_customer():
-    formData = CustomerEntryForm()
+    form = CustomerEntryForm()
 
     if request.method == 'POST':
-        if formData.validate():
+        if form.validate():
             customer = Customer(first_name=request.form['first_name'],last_name=request.form['last_name'],email=request.form['email'],street_address=request.form['street_address']
                        ,suburb=request.form['suburb'],state=request.form['state'],postcode=request.form['postcode'],phone=request.form['phone']
                        ,alternative_contact=request.form['alternative_contact'],alternative_contact_phone=request.form['alternative_contact_phone'],notes=request.form['notes'])
-            formData.populate_obj(customer)
+            form.populate_obj(customer)
             
             db.session.add(customer)
             db.session.commit()
             flash('New customer was successfully added')
-            return render_template('add_child.html')
+            return render_template('add_child.html', customer=customer)
         else:
             flash("Your form contained errors")
             return redirect(url_for('add_customer'))
-    elif request.method == 'GET': 
-        return render_template('add_customer.html', form=formData)    
+     
+    return render_template('add_customer.html', form=form)    
 
 
 @app.route('/add_child', methods=['GET','POST'])
 @login_required
 def add_child():
     # get customer id for insertion as foreign key in child table
-    # customerId = Customer.query.filter_by(email=formData.data['email']).first()
+    # customerId = Customer.query.filter_by(email=email).first()
     customerId = 1
 
     form = ChildEntryForm()
@@ -64,12 +64,12 @@ def add_child():
              db.session.add(child)
              db.session.commit()
              flash('New child was successfully added')
-             return render_template('success.html')  
+             return success() 
          else:
              flash("Your form contained errors")
-             return render_template('success.html') 
-    elif request.method == 'GET': 
-             return render_template('/add_child.html', form=form)  
+             return redirect(url_for('add_child'))
+    
+    return render_template('/add_child.html', form=form)  
 
 
 @app.route('/search_customers', methods=['GET','POST'])
