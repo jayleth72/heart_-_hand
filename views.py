@@ -84,6 +84,7 @@ def search_customers():
 
 
 @app.route('/results')
+@login_required
 def search_results(search):
     results = []
     search_string = search.data['search']
