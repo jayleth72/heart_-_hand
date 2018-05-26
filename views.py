@@ -69,7 +69,7 @@ def add_child(customer):
              flash("Your form contained errors")
              return redirect(url_for('add_child', customer=customer))
     
-    return render_template('/add_child.html', customer=customer, form=form)  
+    return render_template('/add_child.html',  form=form, customer=customer,)  
 
 
 @app.route('/search_customers', methods=['GET','POST'])
