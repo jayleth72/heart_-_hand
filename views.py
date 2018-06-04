@@ -48,7 +48,7 @@ def add_customer():
     return render_template('add_customer.html', form=form)    
 
 
-@app.route('/add_child/', methods=['GET','POST'])
+@app.route('/add_child/<email>', methods=['GET','POST'])
 @login_required
 def add_child():
 
