@@ -40,7 +40,7 @@ def add_customer():
             db.session.add(customer)
             db.session.commit()
             flash('New customer was successfully added')
-            return redirect(url_for('add_child', customer=customer))
+            return redirect(url_for('add_child', email=request.form['email']))
         else:
             flash("Your form contained errors")
             return redirect(url_for('add_customer'))
