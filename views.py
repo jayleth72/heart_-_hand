@@ -50,11 +50,11 @@ def add_customer():
 
 @app.route('/add_child/<email>', methods=['GET','POST'])
 @login_required
-def add_child():
+def add_child(email):
 
     form = ChildEntryForm()
     # get customer id for insertion as foreign key in child table
-    customerId = Customer.query.filter_by(email=request.customer.email).first()
+    customerId = Customer.query.filter_by(email=email).first()
  
     if request.method == 'POST':
          if form.validate():
