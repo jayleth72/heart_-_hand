@@ -61,11 +61,11 @@ def add_child():
     if 'arg3' in request.args:    
         email = request.args['arg3']
         # get customer id for insertion as foreign key in child table
-        customerId = Customer.query.filter_by(email=email).first()
+        customer = Customer.query.filter_by(email=email).first()
    
     if request.method == 'POST':
          if form.validate():
-             child = Child(parent_id=customerId,first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
+             child = Child(parent_id=customer.id,first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
              form.populate_obj(child)
              db.session.add(child)
              db.session.commit()
