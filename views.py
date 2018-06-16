@@ -5,6 +5,7 @@ from flask_wtf import FlaskForm
 from forms import *
 from models import *
 from flask_table import Table, Col
+import sys
 
 @app.route('/profile/<email>')
 @login_required
