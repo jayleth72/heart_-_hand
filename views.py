@@ -61,6 +61,7 @@ def add_child():
  
     if request.method == 'POST':
          if form.validate():
+             print('post fuckers', file=sys.stderr)
              child = Child(parent_id=customerId,first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
              form.populate_obj(child)
              db.session.add(child)
