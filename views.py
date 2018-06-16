@@ -54,9 +54,12 @@ def add_customer():
 def add_child():
 
     form = ChildEntryForm()
-    first_name = request.args['arg1']
-    last_name = request.args['arg2']
-    email = request.args['arg3']
+    if 'arg1' in request.args:
+        first_name = request.args['arg1']
+    if 'arg2' in request.args:    
+        last_name = request.args['arg2']
+    if 'arg3' in request.args:    
+        email = request.args['arg3']
     # get customer id for insertion as foreign key in child table
     customerId = Customer.query.filter_by(email=email).first()
    
