@@ -60,12 +60,11 @@ def add_child():
         last_name = request.args['arg2']
     if 'arg3' in request.args:    
         email = request.args['arg3']
-    # get customer id for insertion as foreign key in child table
-    customerId = Customer.query.filter_by(email=email).first()
+        # get customer id for insertion as foreign key in child table
+        customerId = Customer.query.filter_by(email=email).first()
    
     if request.method == 'POST':
          if form.validate():
-             
              child = Child(parent_id=customerId,first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
              form.populate_obj(child)
              db.session.add(child)
@@ -76,7 +75,7 @@ def add_child():
              flash("Your form contained errors")
              return redirect(url_for('add_child', arg1=first_name, arg2=last_name, arg3=email))
     
-    return render_template('/add_child.html', first_name=first_name, last_name=last_name, form=form)  
+    return render_template('/add_child.html', first_name=first_name, last_name=last_name, email=email, form=form)  
 
 
 @app.route('/search_customers', methods=['GET','POST'])
