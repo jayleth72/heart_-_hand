@@ -40,7 +40,7 @@ def add_customer():
             db.session.add(customer)
             db.session.commit()
             flash('New customer was successfully added')
-            return redirect(url_for('add_child', email=request.form['email']))
+            return redirect(url_for('add_child', first_name=request.form['first_name'],last_name=request.form['last_name'], email=request.form['email']))
         else:
             flash("Your form contained errors")
             return redirect(url_for('add_customer'))
@@ -48,27 +48,27 @@ def add_customer():
     return render_template('add_customer.html', form=form)    
 
 
-@app.route('/add_child/<email>', methods=['GET','POST'])
+@app.route('/add_child/<first_name/last_name/<email>', methods=['GET','POST'])
 @login_required
-def add_child(email):
+def add_child(first_name, last_name, email):
 
     form = ChildEntryForm()
     # get customer id for insertion as foreign key in child table
     customerId = Customer.query.filter_by(email=email).first()
  
-    if request.method == 'POST':
-         if form.validate():
-             child = Child(parent_id=customerId,first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
-             form.populate_obj(child)
-             db.session.add(child)
-             db.session.commit()
-             flash('New child was successfully added')
-             return success() 
-         else:
-             flash("Your form contained errors")
-             return redirect(url_for('add_child'))
+    # if request.method == 'POST':
+    #      if form.validate():
+    #          child = Child(parent_id=customerId,first_name=request.form['first_name'],last_name=request.form['last_name'],date_of_birth=request.form['date_of_birth'],notes=request.form['notes'])
+    #          form.populate_obj(child)
+    #          db.session.add(child)
+    #          db.session.commit()
+    #          flash('New child was successfully added')
+    #          return success() 
+    #      else:
+    #          flash("Your form contained errors")
+    #          return redirect(url_for('add_child'))
     
-    return render_template('/add_child.html', form=form)  
+    return render_template('/add_child.html', first_name=first_name, last_name=last_name, form=form)  
 
 
 @app.route('/search_customers', methods=['GET','POST'])
