@@ -59,7 +59,7 @@ def add_child():
     email = request.args['arg3']
     # get customer id for insertion as foreign key in child table
     customerId = Customer.query.filter_by(email=email).first()
-    print('post fuckers', file=sys.stderr)
+   
     if request.method == 'POST':
          if form.validate():
              
