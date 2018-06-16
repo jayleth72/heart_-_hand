@@ -66,7 +66,7 @@ def add_child():
              db.session.add(child)
              db.session.commit()
              flash('New child was successfully added')
-             return success() 
+             return redirect(url_for('success')) 
          else:
              flash("Your form contained errors")
              return redirect(url_for('add_child', arg1=first_name, arg2=last_name, arg3=email))
