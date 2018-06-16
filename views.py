@@ -40,7 +40,7 @@ def add_customer():
             db.session.add(customer)
             db.session.commit()
             flash('New customer was successfully added')
-            return redirect(url_for('add_child', first_name=request.form['first_name'],last_name=request.form['last_name'], email=request.form['email']))
+            return redirect(url_for('add_child', arg1=request.form['first_name'],arg2=request.form['last_name'], arg3=request.form['email']))
         else:
             flash("Your form contained errors")
             return redirect(url_for('add_customer'))
@@ -48,11 +48,14 @@ def add_customer():
     return render_template('add_customer.html', form=form)    
 
 
-@app.route('/add_child/<first_name>/<last_name>/<email>', methods=['GET','POST'])
+@app.route('/add_child', methods=['GET','POST'])
 @login_required
-def add_child(first_name, last_name, email):
+def add_child():
 
     form = ChildEntryForm()
+    first_name = request.args['arg1']
+    last_name = request.args['arg2']
+    email = request.args['arg3']
     # get customer id for insertion as foreign key in child table
     customerId = Customer.query.filter_by(email=email).first()
  
